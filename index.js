@@ -657,6 +657,32 @@ client.login(config.token);
  * embed Message must be cool, fancy
  * show the list of active employee with startTime in <t::R>
  */
+/**
+ * Calculate employee statistics for the last 30 days
+ * @param {string} guildId The guild ID to calculate statistics for
+ * @returns {Promise<Array>} Array of employee statistics
+ */
+async function calculateEmployeeStats(guildId) {
+  const thirtyDaysAgo = Date.now() - 1000 * 60 * 60 * 24 * 30;
+  const employees = await Employees.find({ GuildId: guildId });
+  
+  return employees.map(employee => {
+    const totalTime = employee.Times
+      .filter(t => parseInt(t.day) > thirtyDaysAgo)
+      .reduce((sum, t) => sum + t.time, 0);
+    
+    const hoursWorked = (totalTime / (1000 * 60 * 60)).toFixed(1);
+    
+    return {
+      userId: employee.UserId,
+      username: employee.Username,
+      hoursWorked: parseFloat(hoursWorked),
+      isActive: employee.OnJob,
+      startTime: employee.StartTime
+    };
+  });
+}
+
 async function updateLeaderBoard(guildId) {
   const setting = await Settings.findOne({ GuildId: guildId });
   if (!setting) return;
