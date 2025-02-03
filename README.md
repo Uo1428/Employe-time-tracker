@@ -1,6 +1,8 @@
 # Employee Time Tracker Discord Bot
-
 The Employee Time Tracker Discord Bot is a powerful tool designed to help server administrators track and manage employee work hours efficiently within Discord.
+![demo](imgs/demo.png)
+---
+
 
 This bot provides a comprehensive solution for time tracking, offering features such as automated role management, detailed statistics, and customizable leaderboards. By leveraging Discord's slash commands and MongoDB for data storage, the bot ensures a seamless and user-friendly experience for both administrators and employees.
 
