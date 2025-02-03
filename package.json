@@ -1,0 +1,17 @@
+{
+  "name": "angelrose-employe-time-tracker",
+  "module": "index.js",
+  "type": "module",
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5.0.0"
+  },
+  "dependencies": {
+    "discord.js": "^14.17.3",
+    "dotenv": "^16.4.7",
+    "mongoose": "^8.9.6",
+    "quickchart-js": "^3.1.3"
+  }
+}
